@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Important metas -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!-- Accessibility metas -->
+        <meta name="title" content="Weather-App">
+        <meta name="description" content="Checking weather become enjoyable than ever with this Weather-App 🌬✨">
+        <meta http-equiv="Content-Language" content="en">
+        <meta name="author" content="Farouk Bouaziz">
+        <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+        <!-- Open Graph metas -->
+        <meta property="og:title" content="Weather-App">
+        <meta property="og:description" content="Checking weather become enjoyable than ever with this Weather-App 🌬✨">
+        <meta property="og:url" content="https://itsfarouk.github.io/Weather-App/">
+        <meta property="og:image" content="example.png">
+        <meta property="og:type" content="website">
+        <meta property="og:locale" content="en_US">
+        <!-- Font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+        <!-- Website assets links -->
+        <link rel="stylesheet" href="assets/css/style.css">
+        <script src="assets/js/script.js" defer></script>
+        <link rel="canonical" href="https://itsfarouk.github.io/Weather-App/">
+        <title>Weather-App</title> 
+    </head>     
+        <header class="header">
+            <div class="container">
+
+                <a href="#" class="logo">
+                    <img 
+                    src="assets/images/logo.png"
+                    alt="Logo"
+                    width="364"
+                    height="58">
+                </a>
+
+                <div class="search-view" data-search-view> 
+
+                    <div class="search-wrapper"> 
+                        <input 
+                        type="search"
+                        name="search"
+                        class="search-field"
+                        aria-label="City search bar" 
+                        placeholder="Search city..."
+                        autocomplete="off"
+                        data-search-field>
+
+                        <span class="m-icon">search</span>
+
+                        <button 
+                        class="icon-btn loading-icon has-state" 
+                        aria-label="close search" 
+                        data-search-toggler>
+                            <span class="m-icon">arrow_back</span>
+                        </button>
+                    </div>
+
+                    <div class="search-result" data-search-result>
+                        <ul class="view-list" data-search-list>
+
+                            <li class="view-item">
+                                <span class="m-icon">location_on</span>
+
+                                <div>
+                                    <p class="item-title">London</p>
+
+                                    <p class="label-2 item-subtitle">State of London, GB</p>
+                                </div>
+
+                                <a href="#" class="item-link has-state" data-search-toggler></a>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                </div> 
+
+                <div class="header-actions">
+
+                    <button 
+                    class="icon-btn has-state" 
+                    aria-label="open search" 
+                    data-search-toggler>
+                        <span class="m-icon icon">search</span>
+                    </button>
+
+                    <a 
+                    href="#/current-location" 
+                    class="btn-primary has-state" 
+                    data-current-location-btn 
+                    >
+                        <span class="m-icon">my_location</span>
+                        
+                        <span class="span">Current Location</span>
+                    </a>
+                </div> 
+
+            </div> 
+        </header>
+    </body>
+</html>
