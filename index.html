@@ -30,51 +30,64 @@
     </head>
     <body>     
         <header class="header">
-            <div class="container">
+            <div class="header__container container">
 
-                <a href="#" class="logo">
-                    <img 
-                    src="assets/images/logo.png"
-                    alt="Logo"
-                    width="364"
-                    height="58">
+                <a href="#" class="header__logo" aria-label="Logo icon">
+                    <img src="assets/images/logo.png" alt="Logo">
                 </a>
 
-                <div class="search-view active" data-search-view> 
+                <div class="header__search" data-search-view> 
 
-                    <div class="search-wrapper"> 
-                        <input 
+                    <div class="header__search-wrapper">
+
+                        <span class="
+                        material-icon 
+                        header__search-main
+                        header__search-icon
+                        ">search</span>
+
+                        <button class="
+                        icon-btn
+                        header__search-main
+                        header__search-back
+                        has-state
+                        " aria-label="Go back" data-search-toggler>
+                            <span class="material-icon">arrow_back</span>
+                        </button>
+                        
+                        <label class="visually-hidden" for="search-city">City search bar</label>
+                        <input class="header__search-field" id="search-city"
                         type="search"
                         name="search"
-                        class="search-field"
-                        aria-label="City search bar" 
                         placeholder="Search city..."
+                        title="Search a city"
                         autocomplete="off"
                         data-search-field>
-
-                        <span class="m-icon loading-icon">search</span>
-
-                        <button 
-                        class="icon-btn loading-icon has-state" 
-                        aria-label="close search" 
-                        data-search-toggler>
-                            <span class="m-icon">arrow_back</span>
-                        </button>
+                        
                     </div>
 
-                    <div class="search-result" data-search-result>
-                        <ul class="view-list" data-search-list>
+                    <div class="header__search-result" data-search-result>
+                        <ul class="header__search-list" data-search-list>
 
-                            <li class="view-item">
-                                <span class="m-icon">location_on</span>
+                            <li class="header__search-item">
+                                <span class="
+                                material-icon
+                                header__search-itematerial-icon
+                                ">location_on</span>
 
                                 <div>
-                                    <p class="item-title">London</p>
+                                    <p class="header__search-item-title">London</p>
 
-                                    <p class="label-2 item-subtitle">State of London, GB</p>
+                                    <p class="
+                                    label--2 
+                                    header__search-item-subtitle
+                                    ">State of London, GB</p>
                                 </div>
 
-                                <a href="#" class="item-link has-state" data-search-toggler></a>
+                                <a href="#" class="
+                                item-link
+                                has-state 
+                                header__search-item-link" data-search-toggler></a>
                             </li>
 
                         </ul>
@@ -82,38 +95,40 @@
 
                 </div> 
 
-                <div class="header-actions">
+                <div class="header__actions">
 
-                    <button 
-                    class="icon-btn has-state" 
-                    aria-label="open search" 
+                    <button class="header__search-btn icon-btn has-state" 
+                    aria-label="open search"
                     data-search-toggler>
-                        <span class="m-icon icon">search</span>
+                        <span class="material-icon icon">search</span>
                     </button>
 
-                    <a 
-                    href="#/current-location" 
-                    class="btn-primary has-state" 
+                    <a class="
+                    header__btn-primary
+                    btn-primary
+                    has-state"
+                    href="#/current-location"
                     data-current-location-btn 
                     >
-                        <span class="m-icon">my_location</span>
+                        <span class="material-icon">my_location</span>
                         
-                        <span class="span">Current Location</span>
+                        <span class="header__btn-text">Current Location</span>
                     </a>
+
                 </div> 
 
             </div> 
         </header>
 
-        <main>
-            <article class="container">
+        <main class="main">
+            <div class="container">
                 
                 <div class="content-left">
                     <!-- Current Weather -->
                     <section class="section current-weather" aria-label="current weather" data-current-weather>
-                        <div class="card card-lg current-weather-card">
+                        <div class="card card--lg current-weather-card">
 
-                            <h2 class="title-2 card-title">Now</h2>
+                            <h2 class="title--2 card-title">Now</h2>
 
                             <div class="weapper">
                                 <p class="heading">25&deg;<sup>c</sup></p>
@@ -125,20 +140,20 @@
                                 class="weather-icon">
                             </div>
 
-                            <p class="body-3">Overcast Clouds</p>
+                            <p class="body--3">Overcast Clouds</p>
 
                             <ul class="meta-list">
 
                                 <li class="meta-item">
-                                    <span class="m-icon">calendar_today</span>
+                                    <span class="material-icon">calendar_today</span>
 
-                                    <p class="title-3 meta-text">Thursday 16, Feb</p>
+                                    <p class="title--3 meta-text">Thursday 16, Feb</p>
                                 </li>
 
                                 <li class="meta-item">
-                                    <span class="m-icon">location_on</span>
+                                    <span class="material-icon">location_on</span>
 
-                                    <p class="title-3 meta-text">London, GB</p>
+                                    <p class="title--3 meta-text">London, GB</p>
                                 </li>
 
                             </ul>
@@ -148,9 +163,9 @@
 
                     <!-- Forecast -->
                     <section class="section forecast" aria-label="forecast" data-5-day-forecast>
-                        <h2 class="title-2" id="forecast-label">5 Days Forecast</h2>
+                        <h2 class="title--2" id="forecast-label">5 Days Forecast</h2>
 
-                        <div class="card card-lg forecast-card">
+                        <div class="card card--lg forecast-card">
                             <ul>
 
                                 <li class="card-item">
@@ -164,13 +179,13 @@
                                         class="weather-icon">
 
                                         <span class="span">
-                                            <p class="title-2">25</p>
+                                            <p class="title--2">25</p>
                                         </span>
                                     </div>
 
-                                    <p class="label-1">17 Feb</p>
+                                    <p class="label--1">17 Feb</p>
 
-                                    <p class="label-1">Friday</p>
+                                    <p class="label--1">Friday</p>
 
                                 </li>
 
@@ -185,13 +200,13 @@
                                         class="weather-icon">
 
                                         <span class="span">
-                                            <p class="title-2">25</p>
+                                            <p class="title--2">25</p>
                                         </span>
                                     </div>
 
-                                    <p class="label-1">17 Feb</p>
+                                    <p class="label--1">17 Feb</p>
 
-                                    <p class="label-1">Friday</p>
+                                    <p class="label--1">Friday</p>
 
                                 </li>
 
@@ -206,13 +221,13 @@
                                         class="weather-icon">
 
                                         <span class="span">
-                                            <p class="title-2">25</p>
+                                            <p class="title--2">25</p>
                                         </span>
                                     </div>
 
-                                    <p class="label-1">17 Feb</p>
+                                    <p class="label--1">17 Feb</p>
 
-                                    <p class="label-1">Friday</p>
+                                    <p class="label--1">Friday</p>
 
                                 </li>
 
@@ -227,13 +242,13 @@
                                         class="weather-icon">
 
                                         <span class="span">
-                                            <p class="title-2">25</p>
+                                            <p class="title--2">25</p>
                                         </span>
                                     </div>
 
-                                    <p class="label-1">17 Feb</p>
+                                    <p class="label--1">17 Feb</p>
 
-                                    <p class="label-1">Friday</p>
+                                    <p class="label--1">Friday</p>
 
                                 </li>
 
@@ -248,13 +263,13 @@
                                         class="weather-icon">
 
                                         <span class="span">
-                                            <p class="title-2">25</p>
+                                            <p class="title--2">25</p>
                                         </span>
                                     </div>
 
-                                    <p class="label-1">17 Feb</p>
+                                    <p class="label--1">17 Feb</p>
 
-                                    <p class="label-1">Friday</p>
+                                    <p class="label--1">Friday</p>
 
                                 </li>
 
@@ -266,53 +281,53 @@
                 <div class="content-right">
                     <!-- Highlights -->
                     <section class="section highlights" aria-labelledby="highlights-label" data-highlights>
-                        <div class="card card-lg">
+                        <div class="card card--lg">
 
-                            <h2 class="title-2" id="highlights-label">Todays Highlights</h2>
+                            <h2 class="title--2" id="highlights-label">Todays Highlights</h2>
 
                             <div class="highlight-list">
 
-                                <div class="card card-sm highlight-card one">
+                                <div class="card card--sm highlight-card one">
 
-                                    <h3 class="title-3">Air Quality Index</h3>
+                                    <h3 class="title--3">Air Quality Index</h3>
 
                                     <div class="wrapper">
 
-                                        <span class="m-icon">air</span>
+                                        <span class="material-icon">air</span>
 
                                         <ul class="card-list">
 
                                             <li class="card-item">
-                                                <p class="title-1">23.3</p>
+                                                <p class="title--1">23.3</p>
 
-                                                <p class="label-1">
+                                                <p class="label--1">
                                                     PM 
                                                     <sub>2.5</sub>
                                                 </p>
                                             </li>
 
                                             <li class="card-item">
-                                                <p class="title-1">23.3</p>
+                                                <p class="title--1">23.3</p>
 
-                                                <p class="label-1">
+                                                <p class="label--1">
                                                     PM 
                                                     <sub>2.5</sub>
                                                 </p>
                                             </li>
 
                                             <li class="card-item">
-                                                <p class="title-1">23.3</p>
+                                                <p class="title--1">23.3</p>
 
-                                                <p class="label-1">
+                                                <p class="label--1">
                                                     PM 
                                                     <sub>2.5</sub>
                                                 </p>
                                             </li>
 
                                             <li class="card-item">
-                                                <p class="title-1">23.3</p>
+                                                <p class="title--1">23.3</p>
 
-                                                <p class="label-1">
+                                                <p class="label--1">
                                                     PM 
                                                     <sub>2.5</sub>
                                                 </p>
@@ -323,34 +338,34 @@
                                     </div>
 
                                     <span 
-                                    class="badge aqi-1 label-1" 
+                                    class="badge aqi-1 label--1" 
                                     title="aqi message">Good</span>
 
                                 </div>
 
-                                <div class="card card-sm highlight-card two">
+                                <div class="card card--sm highlight-card two">
                                     
-                                    <h3 class="title-3">Sunrise & Sunset</h3>
+                                    <h3 class="title--3">Sunrise & Sunset</h3>
                                     
                                     <div class="card-list">
                                         
                                         <div class="card-item">
-                                            <span class="m-icon">clear_day</span>
+                                            <span class="material-icon">clear_day</span>
 
                                             <div>
-                                                <p class="label-1">Sunrise</p>
+                                                <p class="label--1">Sunrise</p>
 
-                                                <p class="title-1">6:30 AM</p>
+                                                <p class="title--1">6:30 AM</p>
                                             </div>
                                         </div>
                                         
                                         <div class="card-item">
-                                            <span class="m-icon">clear_night</span>
+                                            <span class="material-icon">clear_night</span>
 
                                             <div>
-                                                <p class="label-1">Sunset</p>
+                                                <p class="label--1">Sunset</p>
 
-                                                <p class="title-1">5:54 PM</p>
+                                                <p class="title--1">5:54 PM</p>
                                             </div>
                                         </div>
 
@@ -358,50 +373,50 @@
                                     
                                 </div>
 
-                                <div class="card card-sm highlight-card">
+                                <div class="card card--sm highlight-card">
 
-                                    <h3 class="title-3">Humidity</h3>
+                                    <h3 class="title--3">Humidity</h3>
 
                                     <div class="wrapper">
-                                        <span class="m-icon">humidity_percentage</span>
+                                        <span class="material-icon">humidity_percentage</span>
 
-                                        <p class="title-1">35<sub>%</sub></p>
+                                        <p class="title--1">35<sub>%</sub></p>
                                     </div>
                                     
                                 </div>
 
-                                <div class="card card-sm highlight-card">
+                                <div class="card card--sm highlight-card">
 
-                                    <h3 class="title-3">Pressure</h3>
+                                    <h3 class="title--3">Pressure</h3>
 
                                     <div class="wrapper">
-                                        <span class="m-icon">airwave</span>
+                                        <span class="material-icon">airwave</span>
 
-                                        <p class="title-1">1052<sub>hPa</sub></p>
+                                        <p class="title--1">1052<sub>hPa</sub></p>
                                     </div>
                                     
                                 </div>
 
-                                <div class="card card-sm highlight-card">
+                                <div class="card card--sm highlight-card">
 
-                                    <h3 class="title-3">Visibility</h3>
+                                    <h3 class="title--3">Visibility</h3>
 
                                     <div class="wrapper">
-                                        <span class="m-icon">visibility</span>
+                                        <span class="material-icon">visibility</span>
 
-                                        <p class="title-1">10<sub>km</sub></p>
+                                        <p class="title--1">10<sub>km</sub></p>
                                     </div>
                                     
                                 </div>
 
-                                <div class="card card-sm highlight-card">
+                                <div class="card card--sm highlight-card">
 
-                                    <h3 class="title-3">Feel Like</h3>
+                                    <h3 class="title--3">Feel Like</h3>
 
                                     <div class="wrapper">
-                                        <span class="m-icon">thermostat</span>
+                                        <span class="material-icon">thermostat</span>
 
-                                        <p class="title-1">25&deg;<sup>c</sup></p>
+                                        <p class="title--1">25&deg;<sup>c</sup></p>
                                     </div>
                                     
                                 </div>
@@ -414,15 +429,15 @@
                     <!-- Hourly forecast -->
                     <section class="section hourly-forecast" aria-label="hourly forecast" data-hourly-forecast>
 
-                        <h2 class="title-2">Today at</h2>
+                        <h2 class="title--2">Today at</h2>
 
                         <div class="slider-container">
                             <ul class="slider-list" data-temp>
                                 
                                 <li class="slider-item">
-                                    <div class="card card-sm slider-card">
+                                    <div class="card card--sm slider-card">
                                         
-                                        <p class="body-3">03 PM</p>
+                                        <p class="body--3">03 PM</p>
 
                                         <img 
                                         src="./assets/images/weather_icons/01n.png" 
@@ -439,9 +454,9 @@
                                 </li>
                                 
                                 <li class="slider-item">
-                                    <div class="card card-sm slider-card">
+                                    <div class="card card--sm slider-card">
                                         
-                                        <p class="body-3">03 PM</p>
+                                        <p class="body--3">03 PM</p>
 
                                         <img 
                                         src="./assets/images/weather_icons/01n.png" 
@@ -458,9 +473,9 @@
                                 </li>
                                 
                                 <li class="slider-item">
-                                    <div class="card card-sm slider-card">
+                                    <div class="card card--sm slider-card">
                                         
-                                        <p class="body-3">03 PM</p>
+                                        <p class="body--3">03 PM</p>
 
                                         <img 
                                         src="./assets/images/weather_icons/01n.png" 
@@ -477,9 +492,9 @@
                                 </li>
                                 
                                 <li class="slider-item">
-                                    <div class="card card-sm slider-card">
+                                    <div class="card card--sm slider-card">
                                         
-                                        <p class="body-3">03 PM</p>
+                                        <p class="body--3">03 PM</p>
 
                                         <img 
                                         src="./assets/images/weather_icons/01n.png" 
@@ -496,9 +511,9 @@
                                 </li>
                                 
                                 <li class="slider-item">
-                                    <div class="card card-sm slider-card">
+                                    <div class="card card--sm slider-card">
                                         
-                                        <p class="body-3">03 PM</p>
+                                        <p class="body--3">03 PM</p>
 
                                         <img 
                                         src="./assets/images/weather_icons/01n.png" 
@@ -515,9 +530,9 @@
                                 </li>
                                 
                                 <li class="slider-item">
-                                    <div class="card card-sm slider-card">
+                                    <div class="card card--sm slider-card">
                                         
-                                        <p class="body-3">03 PM</p>
+                                        <p class="body--3">03 PM</p>
 
                                         <img 
                                         src="./assets/images/weather_icons/01n.png" 
@@ -534,9 +549,9 @@
                                 </li>
                                 
                                 <li class="slider-item">
-                                    <div class="card card-sm slider-card">
+                                    <div class="card card--sm slider-card">
                                         
-                                        <p class="body-3">03 PM</p>
+                                        <p class="body--3">03 PM</p>
 
                                         <img 
                                         src="./assets/images/weather_icons/01n.png" 
@@ -557,9 +572,9 @@
                             <ul class="slider-list" data-wind>
 
                                 <li class="slider-item">
-                                    <div class="card card-sm slider-card">
+                                    <div class="card card--sm slider-card">
                                         
-                                        <p class="body-3">03 PM</p>
+                                        <p class="body--3">03 PM</p>
 
                                         <img 
                                         src="./assets/images/weather_icons/direction.png" 
@@ -576,9 +591,9 @@
                                 </li>
 
                                 <li class="slider-item">
-                                    <div class="card card-sm slider-card">
+                                    <div class="card card--sm slider-card">
                                         
-                                        <p class="body-3">03 PM</p>
+                                        <p class="body--3">03 PM</p>
 
                                         <img 
                                         src="./assets/images/weather_icons/direction.png" 
@@ -595,9 +610,9 @@
                                 </li>
 
                                 <li class="slider-item">
-                                    <div class="card card-sm slider-card">
+                                    <div class="card card--sm slider-card">
                                         
-                                        <p class="body-3">03 PM</p>
+                                        <p class="body--3">03 PM</p>
 
                                         <img 
                                         src="./assets/images/weather_icons/direction.png" 
@@ -614,9 +629,9 @@
                                 </li>
 
                                 <li class="slider-item">
-                                    <div class="card card-sm slider-card">
+                                    <div class="card card--sm slider-card">
                                         
-                                        <p class="body-3">03 PM</p>
+                                        <p class="body--3">03 PM</p>
 
                                         <img 
                                         src="./assets/images/weather_icons/direction.png" 
@@ -633,9 +648,9 @@
                                 </li>
 
                                 <li class="slider-item">
-                                    <div class="card card-sm slider-card">
+                                    <div class="card card--sm slider-card">
                                         
-                                        <p class="body-3">03 PM</p>
+                                        <p class="body--3">03 PM</p>
 
                                         <img 
                                         src="./assets/images/weather_icons/direction.png" 
@@ -652,9 +667,9 @@
                                 </li>
 
                                 <li class="slider-item">
-                                    <div class="card card-sm slider-card">
+                                    <div class="card card--sm slider-card">
                                         
-                                        <p class="body-3">03 PM</p>
+                                        <p class="body--3">03 PM</p>
 
                                         <img 
                                         src="./assets/images/weather_icons/direction.png" 
@@ -671,9 +686,9 @@
                                 </li>
 
                                 <li class="slider-item">
-                                    <div class="card card-sm slider-card">
+                                    <div class="card card--sm slider-card">
                                         
-                                        <p class="body-3">03 PM</p>
+                                        <p class="body--3">03 PM</p>
 
                                         <img 
                                         src="./assets/images/weather_icons/direction.png" 
@@ -696,11 +711,11 @@
 
                     <!-- Footer -->
                     <footer class="footer">
-                        <p class="body-3">
+                        <p class="body--3">
                             Copyright 2023 Bouaziz Farouk. All Rights Reserved.
                         </p>
 
-                        <p class="body-3">
+                        <p class="body--3">
                             Powered By 
                             <a href="https://openweathermap.org/api" title="Free OpenWeather Api" target="_blank" rel="noopener">
                                 <img 
@@ -712,7 +727,7 @@
 
                 <div class="loading" data-loading></div>
 
-            </article>
+            </div>
         </main>
 
         <!-- 404 Section -->
@@ -720,7 +735,7 @@
 
             <h2 class="heading">404</h2>
 
-            <p class="body-1">Page not found!</p>
+            <p class="body--1">Page not found!</p>
 
             <a href="#" class="btn-primary">
                 <span class="span">Go Home</span>
