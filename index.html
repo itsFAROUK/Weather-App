@@ -40,19 +40,10 @@
 
                     <div class="header__search-wrapper">
 
-                        <span class="
-                        material-icon 
-                        header__search-main
-                        header__search-icon
-                        ">search</span>
+                        <span class="header__search-search-icon material-icon" aria-hidden="true">search</span>
 
-                        <button class="
-                        icon-btn
-                        header__search-main
-                        header__search-back
-                        has-state
-                        " aria-label="Go back" data-search-toggler>
-                            <span class="material-icon">arrow_back</span>
+                        <button class="header__search-back-btn icon-btn has-state" type="button" aria-label="Go back" data-search-toggler>
+                            <span class="material-icon" aria-hidden="true">arrow_back</span>
                         </button>
                         
                         <label class="visually-hidden" for="search-city">City search bar</label>
@@ -70,24 +61,15 @@
                         <ul class="header__search-list" data-search-list>
 
                             <li class="header__search-item">
-                                <span class="
-                                material-icon
-                                header__search-itematerial-icon
-                                ">location_on</span>
+                                <span class="material-icon header__search-item-icon" aria-hidden="true">location_on</span>
 
                                 <div>
                                     <p class="header__search-item-title">London</p>
 
-                                    <p class="
-                                    label--2 
-                                    header__search-item-subtitle
-                                    ">State of London, GB</p>
+                                    <p class="header__search-item-subtitle label--2">State of London, GB</p>
                                 </div>
 
-                                <a href="#" class="
-                                item-link
-                                has-state 
-                                header__search-item-link" data-search-toggler></a>
+                                <a href="#" class="header__search-item-link item-link has-state " data-search-toggler></a>
                             </li>
 
                         </ul>
@@ -97,20 +79,18 @@
 
                 <div class="header__actions">
 
-                    <button class="header__search-btn icon-btn has-state" 
+                    <button class="header__search-btn icon-btn has-state"
+                    type="button" 
                     aria-label="open search"
                     data-search-toggler>
-                        <span class="material-icon icon">search</span>
+                        <span class="material-icon icon" aria-hidden="true">search</span>
                     </button>
 
-                    <a class="
-                    header__btn-primary
-                    btn-primary
-                    has-state"
+                    <a class="header__current-btn btn-primary has-state"
                     href="#/current-location"
                     data-current-location-btn 
                     >
-                        <span class="material-icon">my_location</span>
+                        <span class="material-icon" aria-hidden="true">my_location</span>
                         
                         <span class="header__btn-text">Current Location</span>
                     </a>
