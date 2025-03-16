@@ -1,6 +1,16 @@
-/* Custom Properties */
+/*---------------------------------------
+SCSS Global Variables
+---------------------------------------*/
+/*---------------------------------------
+SCSS Fucntions
+---------------------------------------*/
+/*---------------------------------------
+SCSS Mixins
+---------------------------------------*/
+/*---------------------------------------
+CSS Custom Properties
+---------------------------------------*/
 :root {
-  /*Layout Colors*/
   --primary: #B5A1E5;
   --on-primary: #100E17;
   --background: #131214;
@@ -14,7 +24,6 @@
   --white-alpha-4: hsla(0, 0%, 100%, 0.04);
   --white-alpha-8: hsla(0, 0%, 100%, 0.08);
   --black-alpha-10: hsla(0, 0%, 0%, 0.1);
-  /*AQI Colors */
   --bg-aqi-1: #89E589;
   --on-bg-aqi-1: #1F331F;
   --bg-aqi-2: #E5DD89;
@@ -25,10 +34,8 @@
   --on-bg-aqi-4: #331F1F;
   --bg-aqi-5: #E589B7;
   --on-bg-aqi-5: #331F29;
-  /*Gradient Colors*/
   --gradient-1: linear-gradient(180deg, hsla(270, 5%, 7%, 0) 0%, hsla(270, 5%, 7%, 0.8) 65%, hsl(270, 5%, 7%) 100%);
   --gradient-2: linear-gradient(180deg, hsla(260, 5%, 12%, 0) 0%, hsla(260, 5%, 12%, 0.8) 65%, hsl(260, 5%, 12%) 100%);
-  /*Typography*/
   --ff-nunito-sans: "Nunito", sans-serif, Arial, Helvetica;
   --heading: 5.6rem;
   --title-1: 2rem;
@@ -41,26 +48,25 @@
   --label-2: 1.2rem;
   --weight-regular: 400;
   --weight-semiBold: 600;
-  /*Shadow*/
   --shadow-1: 0px 1px 3px hsla(0, 0%, 0%, 0.5);
   --shadow-2: 0px 3px 6px hsla(0, 0%, 0%, 0.4);
-  /*Border Radius*/
-  --radius-28: 28px;
-  --radius-16: 16px;
-  --radius-pill: 500px;
+  --radius-16: 1.6rem;
+  --radius-28: 2.8rem;
+  --radius-pill: 9999px;
   --radius-circle: 50%;
-  /*Transition*/
   --transition-short: 100ms ease;
 }
-
-@media (min-width: 1200px) {
+@media (min-width: 75em) {
   :root {
-    /* font size */
     --heading: 8rem;
+    --title-1: 3.6rem;
     --title-2: 2rem;
   }
 }
-/* Reset */
+
+/*---------------------------------------
+Rest
+---------------------------------------*/
 *,
 *::before,
 *::after {
@@ -164,7 +170,9 @@ body {
   border-radius: var(--radius-pill);
 }
 
-/* Material icons */
+/*---------------------------------------
+Material Icons
+---------------------------------------*/
 @font-face {
   font-family: "Material Symbols Rounded";
   font-style: normal;
@@ -189,25 +197,27 @@ body {
   direction: ltr;
 }
 
-/* Reused style */
+/*---------------------------------------
+Reused Component & Style
+---------------------------------------*/
 .container {
   max-width: 100em;
   width: 100%;
   margin-inline: auto;
   padding: 1em;
 }
-@media (min-width: 768px) {
+@media (min-width: 48em) {
   .container {
     padding: 1.5em;
   }
 }
-@media (min-width: 1200px) {
+@media (min-width: 75em) {
   .container {
     padding: 2.5em;
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 48em) {
   .section__title {
     margin-block-end: 1em;
   }
@@ -216,7 +226,7 @@ body {
 .section:not(:last-child) {
   margin-block-end: 1em;
 }
-@media (min-width: 768px) {
+@media (min-width: 48em) {
   .section:not(:last-child) {
     margin-block: 1.25em;
   }
@@ -301,12 +311,12 @@ body {
   border-radius: var(--radius-28);
   padding: 1.25em;
 }
-@media (min-width: 768px) {
+@media (min-width: 48em) {
   .card--lg {
     padding: 1.5em;
   }
 }
-@media (min-width: 1200px) {
+@media (min-width: 75em) {
   .card--lg {
     padding: 2.25em;
   }
@@ -315,14 +325,14 @@ body {
   padding: 1em;
   border-radius: var(--radius-16);
 }
-@media (min-width: 768px) {
+@media (min-width: 48em) {
   .card--sm {
     padding: 1.25em;
     display: grid;
     grid-template-rows: min-content 1fr;
   }
 }
-@media (min-width: 1200px) {
+@media (min-width: 75em) {
   .card--sm {
     padding: 1.5em;
   }
@@ -336,11 +346,6 @@ body {
 
 .title--1 {
   font-size: var(--title-1);
-}
-@media (min-width: 1200px) {
-  .title--1 {
-    --title-1: 3.6rem;
-  }
 }
 .title--2 {
   font-size: var(--title-2);
@@ -381,32 +386,32 @@ body {
   border: 0;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 48em) {
   .badge {
     top: 20px;
     right: 20px;
   }
 }
 
-@media (min-width: 768px) {
-  .title-1 {
-    --title-1: 2.4rem;
-  }
-}
-@media (min-width: 1200px) {
-  .title-1 {
-    --title-1: 3.6rem;
-  }
-}
-
-/* Header */
+/*---------------------------------------
+header
+---------------------------------------*/
 .header {
-  /* header__search */
-  /* header__search -> header__search-wrapper */
-  /* header__search -> header__search-result */
-  /* Header actions */
+  font-size: var(--body-3);
+  /*---------------------------------------
+  header -> header__search
+  ---------------------------------------*/
+  /*---------------------------------------
+  header -> header__search -> header__search-wrapper
+  ---------------------------------------*/
+  /*---------------------------------------
+  header -> header__search -> header__search-result
+  ---------------------------------------*/
+  /*---------------------------------------
+  header -> header__actions
+  ---------------------------------------*/
 }
-@media (min-width: 1200px) {
+@media (min-width: 75em) {
   .header {
     position: relative;
     height: 7.5em;
@@ -418,7 +423,7 @@ body {
   align-items: center;
   justify-content: space-between;
 }
-@media (min-width: 1200px) {
+@media (min-width: 75em) {
   .header__container {
     padding-block: 0;
     height: 100%;
@@ -445,7 +450,7 @@ body {
   transition: clip-path 500ms ease;
   transition: clip-path 500ms ease, -webkit-clip-path 500ms ease;
 }
-@media (min-width: 768px) {
+@media (min-width: 48em) {
   .header__search {
     clip-path: circle(1.5em at calc(100% - 1.5em - 12.375em - 1.5em - 1.5em) 3em);
     -webkit-clip-path: circle(1.5em at calc(100% - 1.5em - 12.375em - 1.5em - 1.5em) 3em);
@@ -457,7 +462,7 @@ body {
   clip-path: circle(130% at calc(100% - 2em - 4.5em) 5%);
   -webkit-clip-path: circle(130% at calc(100% - 2em - 4.5em) 5%);
 }
-@media (min-width: 1200px) {
+@media (min-width: 75em) {
   .header__search, .header__search--active {
     all: unset;
     display: block;
@@ -479,7 +484,7 @@ body {
   position: relative;
   border-block-end: 1px solid var(--outline);
 }
-@media (min-width: 1200px) {
+@media (min-width: 75em) {
   .header__search-wrapper {
     border-block-end: none;
   }
@@ -490,12 +495,12 @@ body {
   left: 1.17em;
   transform: translate(-50%, -50%);
 }
-@media (min-width: 1200px) {
+@media (min-width: 75em) {
   .header__search-search-icon {
     display: block;
   }
 }
-@media (min-width: 1200px) {
+@media (min-width: 75em) {
   .header__search-back-btn {
     display: none;
   }
@@ -504,7 +509,7 @@ body {
   background-color: transparent;
   box-shadow: none;
 }
-@media (min-width: 1200px) {
+@media (min-width: 75em) {
   .header__search-field, .header__search-list {
     background-color: var(--surface);
   }
@@ -525,7 +530,7 @@ body {
 .header__search-field::-webkit-search-cancel-button {
   display: none;
 }
-@media (min-width: 1200px) {
+@media (min-width: 75em) {
   .header__search-field {
     height: 3.5em;
     border-radius: var(--radius-28);
@@ -552,7 +557,7 @@ body {
 .header--searching::after {
   display: block;
 }
-@media (min-width: 1200px) {
+@media (min-width: 75em) {
   .header__search-result, .header__search:not(:focus-within) .header__search-result {
     display: none;
   }
@@ -560,10 +565,7 @@ body {
     display: block;
   }
 }
-.header__search-list {
-  padding-block: 0.5em 1em;
-}
-@media (min-width: 1200px) {
+@media (min-width: 75em) {
   .header__search-list {
     position: absolute;
     top: 100%;
@@ -589,7 +591,6 @@ body {
   justify-content: flex-start;
   align-items: center;
   gap: 1em;
-  padding-inline: 1em 1.5em;
 }
 .header__search-item-icon, .header__search-item-subtitle {
   color: var(--on-surface-variant);
@@ -604,12 +605,12 @@ body {
   align-items: center;
   gap: 1em;
 }
-@media (min-width: 768px) {
+@media (min-width: 48em) {
   .header__actions {
     gap: 1.5em;
   }
 }
-@media (min-width: 1200px) {
+@media (min-width: 75em) {
   .header__search-btn {
     display: none;
   }
@@ -617,7 +618,7 @@ body {
 .header__current-btn {
   padding-inline: 0.75em;
 }
-@media (min-width: 768px) {
+@media (min-width: 48em) {
   .header__current-btn {
     padding-inline: 1em 1.5em;
   }
@@ -626,7 +627,7 @@ body {
   display: none;
   font-weight: var(--weight-semiBold);
 }
-@media (min-width: 768px) {
+@media (min-width: 48em) {
   .header__btn-text {
     display: block;
   }
@@ -640,19 +641,21 @@ body {
     transform: translateY(-50%) rotate(1turn);
   }
 }
-/* main */
+/*---------------------------------------
+main
+---------------------------------------*/
 .main {
   height: calc(100vh - 5em);
   height: calc(100svh - 5em);
   overflow: hidden;
 }
-@media (min-width: 768px) {
+@media (min-width: 48em) {
   .main {
     height: calc(100vh - 6em);
     height: calc(100svh - 6em);
   }
 }
-@media (min-width: 1200px) {
+@media (min-width: 75em) {
   .main {
     height: calc(100vh - 7.5em);
     height: calc(100svh - 7.5em);
@@ -667,7 +670,7 @@ body {
   overflow-y: auto;
   overflow-y: overlay;
 }
-@media (min-width: 768px) {
+@media (min-width: 48em) {
   .main__container {
     padding-block-start: 0;
     grid-template-columns: 17.5em minmax(0, 1fr);
@@ -675,7 +678,7 @@ body {
     gap: 1.5em;
   }
 }
-@media (min-width: 1200px) {
+@media (min-width: 75em) {
   .main__container {
     grid-template-columns: 22.5em minmax(0, 1fr);
     gap: 2.5em;
@@ -701,15 +704,19 @@ body {
   z-index: 1;
 }
 
-/* main/left-content */
-@media (min-width: 768px) {
+/*---------------------------------------
+main -> main__left-content
+---------------------------------------*/
+@media (min-width: 48em) {
   .main__left-content {
     position: sticky;
     top: 0;
   }
 }
 
-/* main/left-content/current-weather */
+/*---------------------------------------
+main -> main__left-content -> current-weather
+---------------------------------------*/
 .current-weather__temp-wrapper {
   margin-block: 0.75em;
   display: flex;
@@ -719,7 +726,7 @@ body {
 .current-weather__icon {
   margin-inline: auto;
 }
-@media (min-width: 1200px) {
+@media (min-width: 75em) {
   .current-weather__icon {
     width: 5em;
   }
@@ -744,7 +751,9 @@ body {
   color: var(--on-surface-variant);
 }
 
-/* main/left-content/daily-forecast */
+/*---------------------------------------
+main -> main__left-content -> daily-forecast
+---------------------------------------*/
 .daily-forecast__item, .daily-forecast__icon-wrapper {
   display: flex;
   align-items: center;
@@ -752,7 +761,7 @@ body {
 .daily-forecast__item:not(:last-child) {
   margin-block-end: 0.75em;
 }
-@media (min-width: 768px) {
+@media (min-width: 48em) {
   .daily-forecast__item:not(:last-child) {
     margin-block-end: 1em;
   }
@@ -766,7 +775,7 @@ body {
 .daily-forecast__temp {
   margin-block-end: 0;
 }
-@media (min-width: 1200px) {
+@media (min-width: 75em) {
   .daily-forecast__temp {
     --title-2: 2.2rem;
   }
@@ -778,17 +787,19 @@ body {
   text-align: right;
 }
 
-/* main/right-content/highlights */
+/*---------------------------------------
+main -> main__right-content -> highlights
+---------------------------------------*/
 .highlights__list {
   display: grid;
   gap: 1.25em;
 }
-@media (min-width: 768px) {
+@media (min-width: 48em) {
   .highlights__list {
     grid-template-columns: 1fr 1fr;
   }
 }
-@media (min-width: 1400px) {
+@media (min-width: 87.5em) {
   .highlights__list {
     grid-template-columns: repeat(4, 1fr);
   }
@@ -798,7 +809,7 @@ body {
   background-color: var(--black-alpha-10);
   position: relative;
 }
-@media (min-width: 768px) {
+@media (min-width: 48em) {
   .highlights-card:nth-child(-n+2) {
     grid-column: span 2;
     height: 10em;
@@ -807,7 +818,7 @@ body {
     height: 7.5em;
   }
 }
-@media (min-width: 1200px) {
+@media (min-width: 75em) {
   .highlights-card:nth-child(-n+2) {
     height: 12.5em;
   }
@@ -829,13 +840,14 @@ body {
 }
 .highlights-card__icon {
   font-size: 3.2rem;
+  min-width: 3rem;
 }
-@media (min-width: 768px) {
+@media (min-width: 48em) {
   .highlights-card__icon {
     font-size: 3.6rem;
   }
 }
-@media (min-width: 1200px) {
+@media (min-width: 75em) {
   .highlights-card__icon {
     font-size: 4.8rem;
   }
@@ -847,10 +859,11 @@ body {
 }
 .highlights-card__item {
   width: 50%;
+  flex-wrap: wrap;
   justify-content: flex-end;
   gap: 0.25em;
 }
-@media (min-width: 768px) {
+@media (min-width: 48em) {
   .highlights-card__item--aqi {
     width: 25%;
     flex-direction: column-reverse;
@@ -903,35 +916,42 @@ body {
 .twilight__label {
   margin-block-end: 0.25em;
 }
-@media (min-width: 1200px) {
+@media (min-width: 75em) {
   .twilight {
     -moz-column-gap: 1.5em;
     column-gap: 1.5em;
   }
 }
 
-/* Main/Right-Content/Hourly-Forecast */
+/*---------------------------------------
+main -> main__right-content -> hourly-forecast
+---------------------------------------*/
 .hourly-forecast__container {
   overflow-x: auto;
-  margin-inline: -1em;
+  margin-inline: -space("lg");
 }
-@media (min-width: 768px) {
+@media (min-width: 48em) {
   .hourly-forecast__container {
-    margin-inline: 0 -1.5em;
+    margin-inline: 0 -space("2xl");
     border-bottom-left-radius: var(--radius-16);
     border-top-left-radius: var(--radius-16);
   }
 }
-
 .hourly-forecast__container::-webkit-scrollbar {
   display: none;
 }
-
 .hourly-forecast__list {
   display: flex;
   gap: 0.75em;
 }
-@media (min-width: 768px) {
+.hourly-forecast__list :first-child {
+  margin-block-end: 1em;
+}
+.hourly-forecast__list::before, .hourly-forecast__list::after {
+  content: "";
+  min-width: 0.25em;
+}
+@media (min-width: 48em) {
   .hourly-forecast__list::before {
     display: none;
   }
@@ -939,40 +959,28 @@ body {
     min-width: 0.75em;
   }
 }
-
-.hourly-forecast__list:first-child {
-  margin-block-end: 16px;
-}
-
-.hourly-forecast__list::before,
-.hourly-forecast__list::after {
-  content: "";
-  min-width: 4px;
-}
-
 .hourly-forecast__item {
-  min-width: 110px;
+  min-width: 6.875em;
   flex: 1 1 100%;
 }
-
 .hourly-forecast__card {
   text-align: center;
 }
-
-.hourly-forecast__icon {
-  margin-inline: auto;
-  margin-block: 12px;
-}
-
-@media (min-width: 768px) {
-  .hourly-forecast .card--sm {
+@media (min-width: 48em) {
+  .hourly-forecast__card {
     padding: 1em;
   }
 }
+.hourly-forecast__icon {
+  margin-inline: auto;
+  margin-block: 0.75em;
+}
 
-/* Footer */
+/*---------------------------------------
+main -> main__right-content -> Footer
+---------------------------------------*/
 .footer,
-.footer .body-3:last-child {
+.footer__img {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -982,19 +990,15 @@ body {
 .footer {
   color: var(--on-surface-variant);
   text-align: center;
-  gap: 12px 24px;
-  margin-block-start: 28px;
+  margin-block-start: 1.75em;
+}
+.footer__img {
+  gap: 0.375em;
 }
 
-.fade-in .footer {
-  display: flex;
-}
-
-.footer .body-3:last-child {
-  gap: 6px;
-}
-
-/* Loading */
+/*---------------------------------------
+loading
+---------------------------------------*/
 .loading {
   position: absolute;
   top: 0;
@@ -1006,24 +1010,20 @@ body {
   z-index: 1;
   display: none;
 }
-
 .loading::before {
   content: "";
-  width: 48px;
-  height: 48px;
+  width: 3em;
+  height: 3em;
   border: 4px solid var(--on-background);
   border-block-start-color: transparent;
   border-radius: var(--radius-circle);
-  -webkit-border-radius: var(--radius-circle);
-  -moz-border-radius: var(--radius-circle);
-  -ms-border-radius: var(--radius-circle);
-  -o-border-radius: var(--radius-circle);
   animation: loading 500ms linear infinite;
-  -webkit-animation: loading 500ms linear infinite;
 }
 
-/* Error Section */
-.error-content {
+/*---------------------------------------
+error
+---------------------------------------*/
+.error {
   position: fixed;
   top: 0;
   left: 0;
@@ -1037,24 +1037,6 @@ body {
   display: none;
   z-index: 8;
 }
-
-.error-content .btn-primary {
-  margin-block-start: 20px;
-}
-
-@media (min-width: 768px) {
-  .hourly-forecast__container {
-    margin-inline: 0 -24px;
-    border-bottom-left-radius: var(--radius-16);
-    border-top-left-radius: var(--radius-16);
-  }
-  .hourly-forecast__list::before {
-    display: none;
-  }
-  .hourly-forecast__list::after {
-    min-width: 12px;
-  }
-  .hourly-forecast .card--sm {
-    padding: 16px;
-  }
+.error__btn {
+  margin-block-start: 1.25em;
 }/*# sourceMappingURL=style.css.map */

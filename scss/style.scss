@@ -1,6 +1,71 @@
-/* Custom Properties */
+/*---------------------------------------
+SCSS Global Variables
+---------------------------------------*/
+// -> Spacing
+$spacing: (
+    "xs": 0.25em,
+    "sm": 0.5em,
+    "md": 0.75em,
+    "lg": 1em,
+    "xl": 1.25em,
+    "2xl": 1.5em,
+    "3xl": 2.5em,
+    "4xl": 3em,
+    "5xl": 3.5em,
+    "6xl": 5em
+);
+
+// -> Breakpoints
+$breakpoints: (
+    'tablet': 48em,
+    'desktop': 75em,
+    'large-desktop': 87.5em
+);
+
+// -> AQI-Colors
+$aqi-colors: (
+    "aqi-1": (var(--bg-aqi-1), var(--on-bg-aqi-1)),
+    "aqi-2": (var(--bg-aqi-2), var(--on-bg-aqi-2)),
+    "aqi-3": (var(--bg-aqi-3), var(--on-bg-aqi-3)),
+    "aqi-4": (var(--bg-aqi-4), var(--on-bg-aqi-4)),
+    "aqi-5": (var(--bg-aqi-5), var(--on-bg-aqi-5))
+);
+
+
+
+/*---------------------------------------
+SCSS Fucntions
+---------------------------------------*/
+@function space($size) {
+    @return map-get($spacing, $size);
+}
+
+@function get-breakpoint($breakpoint) {
+    @return map-get($breakpoints, $breakpoint);
+}
+
+
+
+/*---------------------------------------
+SCSS Mixins
+---------------------------------------*/
+@mixin media($breakpoint) {
+    @if map-has-key($breakpoints, $breakpoint) {
+        @media (min-width: get-breakpoint($breakpoint)) {
+            @content;
+        }
+    } @else {
+        @warn "Breakpoint '#{$breakpoint}' not found in \$breakpoints map.";
+    }
+}
+
+
+
+/*---------------------------------------
+CSS Custom Properties
+---------------------------------------*/
 :root {
-    /*Layout Colors*/
+    // -> Layout Colors
     --primary: #B5A1E5; 
     --on-primary: #100E17;
 
@@ -19,7 +84,7 @@
     --white-alpha-8: hsla(0, 0%, 100%, 0.08);
     --black-alpha-10: hsla(0, 0%, 0%, 0.1);
     
-    /*AQI Colors */
+    // -> AQI Colors
     --bg-aqi-1: #89E589;
     --on-bg-aqi-1: #1F331F;
     --bg-aqi-2: #E5DD89;
@@ -31,12 +96,12 @@
     --bg-aqi-5: #E589B7;
     --on-bg-aqi-5: #331F29;
 
-    /*Gradient Colors*/ 
+    // -> Gradient Colors
     --gradient-1: linear-gradient(180deg, hsla(270, 5%, 7%, 0) 0%, hsla(270, 5%, 7%, 0.8) 65%, hsl(270, 5%, 7%) 100%);
     --gradient-2: linear-gradient(180deg, hsla(260, 5%, 12%, 0) 0%, hsla(260, 5%, 12%, 0.8) 65%, hsl(260, 5%, 12%) 100%);
 
 
-    /*Typography*/
+    // -> Typography
     --ff-nunito-sans: "Nunito", sans-serif, Arial, Helvetica;
 
     --heading: 5.6rem;
@@ -53,31 +118,34 @@
     --weight-semiBold: 600;
 
 
-    /*Shadow*/ 
+    // -> Shadow 
     --shadow-1: 0px 1px 3px hsla(0, 0%, 0%, 0.5);
     --shadow-2: 0px 3px 6px hsla(0, 0%, 0%, 0.4);
 
 
-    /*Border Radius*/
-    --radius-28: 28px;
-    --radius-16: 16px;
-    --radius-pill: 500px;
+    // -> Border Radius
+    --radius-16: 1.6rem;
+    --radius-28: 2.8rem;
+    --radius-pill: 9999px;
     --radius-circle: 50%;
 
     
-    /*Transition*/
+    // -> Transition
     --transition-short: 100ms ease;
-}
-@media (min-width: 1200px) {
-    :root {
-        /* font size */
+
+    
+
+    @include media(desktop) {
         --heading: 8rem;
+        --title-1: 3.6rem;
         --title-2: 2rem;
     }
 }
 
 
-/* Reset */ 
+/*---------------------------------------
+Rest
+---------------------------------------*/
 *,
 *::before,
 *::after {
@@ -99,9 +167,7 @@ a {
     text-decoration: none;
 }
 
-abbr {
-    text-decoration: none;
-}
+abbr { text-decoration: none; }
 
 img {
     max-width: 100%;
@@ -165,7 +231,9 @@ body {
 }
 
 
-/* Material icons */ 
+/*---------------------------------------
+Material Icons
+---------------------------------------*/ 
 @font-face {
     font-family: 'Material Symbols Rounded';
     font-style: normal;
@@ -192,33 +260,35 @@ body {
 }
 
 
-/* Reused style */
+/*---------------------------------------
+Reused Component & Style
+---------------------------------------*/
 .container {
     max-width: 100em;
     width: 100%;
     margin-inline: auto;
-    padding: 1em;
+    padding: space("lg");
 
-    @media (min-width: 768px) {
-        padding: 1.5em;
+    @include media(tablet) {
+        padding: space("2xl");
     }
 
-    @media (min-width: 1200px) {
-        padding: 2.5em; 
+    @include media(desktop) {
+        padding: space("3xl");
     }
 }
 
 .section {
     &__title { 
-        @media (min-width: 768px) { margin-block-end: 1em; } 
+        @include media(tablet) { margin-block-end: space("lg"); } 
     }
 }
 
 .section:not(:last-child) { 
-    margin-block-end: 1em; 
+    margin-block-end: space("lg"); 
 
-    @media (min-width: 768px) {
-        margin-block: 1.25em;
+    @include media(tablet) {
+        margin-block: space("xl");
     }
 }
 
@@ -273,10 +343,10 @@ body {
 .btn-primary {
     display: flex;
     align-items: center;
-    gap: 1em;
-    padding-inline: 1em;
+    gap: space("lg");
+    padding-inline: space("lg");
     height: 3em;
-    line-height: 3em;
+    line-height: space("4xl");
     max-width: max-content;
     border-radius: var(--radius-pill);
     background-color: var(--primary);
@@ -299,29 +369,29 @@ body {
 
     &--lg {
         border-radius: var(--radius-28);
-        padding: 1.25em;
+        padding: space("xl");
 
-        @media (min-width: 768px) {
-            padding: 1.5em; 
+        @include media(tablet) {
+            padding: space("2xl"); 
         }
 
-        @media (min-width: 1200px) {
+        @include media(desktop) {
             padding: 2.25em; 
         }
     }
 
     &--sm {
-        padding: 1em;
+        padding: space("lg");
         border-radius: var(--radius-16);
 
-        @media (min-width: 768px) {
-            padding: 1.25em;
+        @include media(tablet) {
+            padding: space("xl");
             display: grid;
             grid-template-rows: min-content 1fr;
         }
 
-        @media (min-width: 1200px) {
-            padding: 1.5em; 
+        @include media(desktop) {
+            padding: space("2xl"); 
         }
     }
 }
@@ -335,16 +405,14 @@ body {
 .title {
     &--1 {
         font-size: var(--title-1);
-        
-        @media (min-width: 1200px) { --title-1: 3.6rem; }
     }
     &--2 { 
         font-size: var(--title-2);
         margin-bottom: 0.6em;
     }
     &--3 { 
-            font-size: var(--title-3); 
-            font-weight: var(--weight-semiBold); 
+        font-size: var(--title-3); 
+        font-weight: var(--weight-semiBold); 
     }
 }
 
@@ -375,26 +443,18 @@ body {
 }
 
 .badge {
-    @media (min-width: 768px) {
+    @include media(tablet) {
         top: 20px;
         right: 20px;
     }
 }
 
-.title-1 {
-    @media (min-width: 768px) {
-        --title-1: 2.4rem; 
-    }
-
-    @media (min-width: 1200px) {
-        --title-1: 3.6rem; 
-    }
-} 
-
-
-/* Header */
+/*---------------------------------------
+header
+---------------------------------------*/
 .header {
-    @media (min-width: 1200px) {
+    font-size: var(--body-3);
+    @include media(desktop) {
         position: relative;
         height: 7.5em;
         z-index: 5;
@@ -405,7 +465,7 @@ body {
         align-items: center;
         justify-content: space-between;
 
-        @media (min-width: 1200px) {
+        @include media(desktop) {
             padding-block: 0;
             height: 100%;
         }
@@ -415,14 +475,16 @@ body {
         width: clamp(15rem, 15%, 30rem);
     }
 
-    /* header__search */ 
+    /*---------------------------------------
+    header -> header__search
+    ---------------------------------------*/
     &__search {
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100vh;
-        height: 100svh; //formobilebrowser
+        height: 100svh; //for mobile browser
         background-color: var(--surface);
         color: var(--on-surface);
         clip-path: circle(1.5em at calc(100% - 1em - 3em - 1em - 1.5em) 2.5em);
@@ -432,7 +494,7 @@ body {
         z-index: 5;
         transition: clip-path 500ms ease;
 
-        @media (min-width: 768px) {
+        @include media(tablet) {
             clip-path: circle(1.5em at calc(100% - 1.5em - 12.375em - 1.5em - 1.5em) 3em);
             -webkit-clip-path: circle(1.5em at calc(100% - 1.5em - 12.375em - 1.5em - 1.5em) 3em);
         }
@@ -444,7 +506,7 @@ body {
             -webkit-clip-path: circle(130% at calc(100% - 2em - 4.5em) 5%);
         }
 
-        @media (min-width: 1200px) {
+        @include media(desktop) {
             &, &--active {
                 all: unset;
                 display: block;
@@ -466,13 +528,15 @@ body {
         }
     }
 
-    /* header__search -> header__search-wrapper */
+    /*---------------------------------------
+    header -> header__search -> header__search-wrapper
+    ---------------------------------------*/
 
     &__search-wrapper {
         position: relative;
         border-block-end: 1px solid var(--outline);
 
-        @media (min-width: 1200px) { border-block-end: none; }
+        @include media(desktop) { border-block-end: none; }
     }
 
     &__search-search-icon, &__search-back-btn {
@@ -483,11 +547,11 @@ body {
     }
 
     &__search-search-icon {
-        @media (min-width: 1200px) { display: block; }
+        @include media(desktop) { display: block; }
     }
 
     &__search-back-btn {
-        @media (min-width: 1200px) { display: none; }
+        @include media(desktop) { display: none; }
     }
 
     &__search-back {
@@ -496,21 +560,21 @@ body {
     }
 
     &__search-field, &__search-list {
-        @media (min-width: 1200px) { background-color: var(--surface); }
+        @include media(desktop) { background-color: var(--surface); }
     }
 
     &__search-field {
         font-size: 1.6rem;
         height: 5em;
         line-height: 5em;
-        padding-inline: 3.5em 1em;
+        padding-inline: space("5xl") space("lg");
         outline: none;
 
         &::placeholder { color: var(--on-surface-variant-2); }
 
         &::-webkit-search-cancel-button { display: none; }
 
-        @media (min-width: 1200px) {
+        @include media(desktop) {
             height: 3.5em;
             border-radius: var(--radius-28);
         }
@@ -540,8 +604,10 @@ body {
         &::after { display: block; }
     }
 
-    /* header__search -> header__search-result */
-    @media (min-width: 1200px) {
+    /*---------------------------------------
+    header -> header__search -> header__search-result
+    ---------------------------------------*/
+    @include media(desktop) {
         &__search-result,
         &__search:not(:focus-within) &__search-result { display: none; }
 
@@ -549,9 +615,9 @@ body {
     }
 
     &__search-list {
-        padding-block: 0.5em 1em; 
+        padding-block: space("sm) space(lg"); 
         
-        @media (min-width: 1200px) {
+        @include media(desktop) {
             position: absolute;
             top: 100%;
             left: 0;
@@ -574,8 +640,8 @@ body {
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        gap: 1em;
-        padding-inline: 1em 1.5em;
+        gap: space("lg");
+        padding-inline: space("lg) space(2xl");
     
         &-icon, &-subtitle {
             color: var(--on-surface-variant);
@@ -589,26 +655,28 @@ body {
     }
 
 
-    /* Header actions */
+    /*---------------------------------------
+    header -> header__actions
+    ---------------------------------------*/
     &__actions {
         display: flex;
         align-items: center;
-        gap: 1em;
+        gap: space("lg");
 
-        @media (min-width: 768px) {
+        @include media(tablet) {
             gap: 1.5em; 
         }        
     }
 
     &__search-btn {
-        @media (min-width: 1200px) { display: none; }
+        @include media(desktop) { display: none; }
     }
 
     &__current-btn { 
-        padding-inline: 0.75em; 
+        padding-inline: space("md"); 
         
-        @media (min-width: 768px) {
-            padding-inline: 1em 1.5em; 
+        @include media(tablet) {
+            padding-inline: space(lg) 1.5em; 
         } 
     }
 
@@ -616,7 +684,7 @@ body {
         display: none; 
         font-weight: var(--weight-semiBold);
 
-        @media (min-width: 768px) {
+        @include media(tablet) {
             display: block;
         } 
     }
@@ -629,18 +697,20 @@ body {
 }
 
 
-/* main */
+/*---------------------------------------
+main
+---------------------------------------*/
 .main {
     height: calc(100vh - 5em);
     height: calc(100svh - 5em); // 'svh' For Phones 
     overflow: hidden;
 
-    @media (min-width: 768px) {
+    @include media(tablet) {
         height: calc(100vh - 6em);
         height: calc(100svh - 6em);
     }
 
-    @media (min-width: 1200px) {
+    @include media(desktop) {
         height: calc(100vh - 7.5em);
         height: calc(100svh - 7.5em);
     }
@@ -649,21 +719,21 @@ body {
         position: relative;
         display: grid;
         grid-template-columns: minmax(0, 1fr);
-        gap: 1.25em;
+        gap: space("xl");
         height: 100%;
         overflow-y: auto; // for firefox
         overflow-y: overlay;
     
-        @media (min-width: 768px) {
+        @include media(tablet) {
             padding-block-start: 0;
             grid-template-columns: 17.5em minmax(0, 1fr);
             align-items: flex-start;
-            gap: 1.5em;
+            gap: space("2xl");
         }
     
-        @media (min-width: 1200px) {
+        @include media(desktop) {
             grid-template-columns: 22.5em minmax(0, 1fr);
-            gap: 2.5em;
+            gap: space("3xl");
         }
 
         &::-webkit-scrollbar-thumb { background-color: transparent; }
@@ -688,28 +758,32 @@ body {
 }
 
 
-/* main/left-content */
+/*---------------------------------------
+main -> main__left-content
+---------------------------------------*/
 .main__left-content {
-    @media (min-width: 768px) {
+    @include media(tablet) {
         position: sticky;
         top: 0;
     }
 }
 
 
-/* main/left-content/current-weather */
+/*---------------------------------------
+main -> main__left-content -> current-weather
+---------------------------------------*/
 .current-weather {
     &__temp-wrapper {
-        margin-block: 0.75em;
+        margin-block: space("md");
         display: flex;
-        gap: 0.5em;
+        gap: space("sm");
         align-items: center;
     }
 
     &__icon { 
         margin-inline: auto;
         
-        @media (min-width: 1200px) {
+        @include media(desktop) {
             width: 5em; 
         }
     }
@@ -717,26 +791,28 @@ body {
     &__description { text-transform: capitalize; }
 
     &__meta-list {
-        margin-block-start: 1em;
-        padding-block-start: 1em;
+        margin-block-start: space("lg");
+        padding-block-start: space("lg");
         border-block-start: 1px solid var(--outline);
     }
 
     &__meta-item {
         display: flex;
         align-items: center;
-        gap: 0.5em;
+        gap: space("sm");
     }
 
     &__meta-item:not(:last-child) {
-        margin-block-end: 0.75em;
+        margin-block-end: space("md");
     }
 
     &__meta-text { color: var(--on-surface-variant); }
 }
 
 
-/* main/left-content/daily-forecast */
+/*---------------------------------------
+main -> main__left-content -> daily-forecast
+---------------------------------------*/
 .daily-forecast {
     &__item, &__icon-wrapper {
         display: flex;
@@ -744,14 +820,14 @@ body {
     }
 
     &__item:not(:last-child) {
-        margin-block-end: 0.75em; 
+        margin-block-end: space("md"); 
     
-        @media (min-width: 768px) {
-            margin-block-end: 1em;
+        @include media(tablet) {
+            margin-block-end: space("lg");
         }
     }
 
-    &__icon-wrapper { gap: 0.5em; }
+    &__icon-wrapper { gap: space("sm"); }
 
     &__icon { 
 	    max-width: none;
@@ -760,7 +836,7 @@ body {
     &__temp {
         margin-block-end: 0;
     
-        @media (min-width: 1200px) {
+        @include media(desktop) {
             --title-2: 2.2rem; 
         }
     }
@@ -773,17 +849,19 @@ body {
     }
 }
 
-/* main/right-content/highlights */
+/*---------------------------------------
+main -> main__right-content -> highlights
+---------------------------------------*/
 .highlights {
     &__list {
         display: grid;
-        gap: 1.25em;
+        gap: space("xl");
         
-        @media (min-width: 768px) {
+        @include media(tablet) {
             grid-template-columns: 1fr 1fr; 
         }
 
-        @media (min-width: 1400px) {
+        @include media(large-desktop) {
             grid-template-columns: repeat(4, 1fr); 
         }
     }
@@ -793,7 +871,7 @@ body {
     background-color: var(--black-alpha-10);
     position: relative;
 
-    @media (min-width: 768px) {
+    @include media(tablet) {
         &:nth-child(-n+2) { // First two elements
             grid-column: span 2;
             height: 10em;
@@ -805,7 +883,7 @@ body {
         
     }
 
-    @media (min-width: 1200px) {
+    @include media(desktop) {
         &:nth-child(-n+2) { height: 12.5em; }
 
         &:nth-child(n+3) { height: 9.375em; }
@@ -813,7 +891,7 @@ body {
 
     &__title {
         color: var(--on-surface-variant);
-        margin-block-end: 1.25em;
+        margin-block-end: space("xl");
     }
 
     &__wrapper, &__list, &__item {
@@ -823,33 +901,35 @@ body {
 
     &__wrapper {
         justify-content: space-between;
-        gap: 1em;
+        gap: space("lg");
     }
 
     &__icon {
         font-size: 3.2rem;
+        min-width: 3rem;
     
-        @media (min-width: 768px) { font-size: 3.6rem; }
+        @include media(tablet) { font-size: 3.6rem; }
 
-        @media (min-width: 1200px) { font-size: 4.8rem; }
+        @include media(desktop) { font-size: 4.8rem; }
     }
 
     &__list {
         flex-wrap: wrap;
         flex-grow: 1;
-        row-gap: 0.5em;
+        row-gap: space("sm");
     }
 
     &__item {
         width: 50%;
+        flex-wrap: wrap;
         justify-content: flex-end;
-        gap: 0.25em;
+        gap: space("xs");
     
         &--aqi {
-            @media (min-width: 768px) {
+            @include media(tablet) {
                 width: 25%;
                 flex-direction: column-reverse;
-                gap: 0.5em;
+                gap: space("sm");
             }
         }
     }
@@ -871,99 +951,86 @@ body {
     font-weight: var(--weight-semiBold);
     cursor: help;
 
-    &--aqi-1 {
-        background-color: var(--bg-aqi-1);
-        color: var(--on-bg-aqi-1);
-    }
-
-    &--aqi-2 {
-        background-color: var(--bg-aqi-2);
-        color: var(--on-bg-aqi-2);
-    }
-
-    &--aqi-3 {
-        background-color: var(--bg-aqi-3);
-        color: var(--on-bg-aqi-3);
-    }
-
-    &--aqi-4 {
-        background-color: var(--bg-aqi-4);
-        color: var(--on-bg-aqi-4);
-    }
-
-    &--aqi-5 {
-        background-color: var(--bg-aqi-5);
-        color: var(--on-bg-aqi-5);
+    @each $name, $colors in $aqi-colors {
+        &--#{$name} {
+            background-color: nth($colors, 1);
+            color: nth($colors, 2);
+        }
     }
 }
 
 .twilight {
     justify-content: flex-start;
     flex-wrap: wrap;
-    gap: 0.5em 1em;
+    gap: space("sm") space("lg");
 
-    &__label { margin-block-end: 0.25em; }
+    &__label { margin-block-end: space("xs"); }
 
-    @media (min-width: 1200px) {
-        -moz-column-gap: 1.5em;
-        column-gap: 1.5em;
+    @include media(desktop) {
+        -moz-column-gap: space("2xl");
+        column-gap: space("2xl");
     }
 }
 
 
-/* Main/Right-Content/Hourly-Forecast */
-.hourly-forecast__container {
-    overflow-x: auto;
-    margin-inline: -1em;
+/*---------------------------------------
+main -> main__right-content -> hourly-forecast
+---------------------------------------*/
+.hourly-forecast {
+    &__container {
+        overflow-x: auto;
+        margin-inline: -space("lg");
+        
+        @include media(tablet) {    
+            margin-inline: 0 -space("2xl");
+            border-bottom-left-radius: var(--radius-16);
+            border-top-left-radius: var(--radius-16);
+        }
 
-    @media (min-width: 768px) {    
-        margin-inline: 0 -1.5em;
-        border-bottom-left-radius: var(--radius-16);
-        border-top-left-radius: var(--radius-16);
+        &::-webkit-scrollbar { display: none; }
+    }
+    
+
+    &__list {
+        display: flex;
+        gap: space("md");
+
+        :first-child { margin-block-end: space("lg"); }
+
+        &::before,
+        &::after {
+            content: "";
+            min-width: 0.25em;
+        }
+    
+        @include media(tablet) {
+            &::before { display: none; }
+            &::after { min-width: space("md"); }
+        }
+    }
+
+    &__item {
+        min-width: 6.875em;
+        flex: 1 1 100%;
+    }
+
+    &__card { 
+        text-align: center; 
+
+        @include media(tablet) { padding: space("lg"); }
+    }
+
+    &__icon {
+        margin-inline: auto;
+        margin-block: space("md");
     }
 }
 
-.hourly-forecast__container::-webkit-scrollbar { display: none; }
-
-.hourly-forecast__list {
-    display: flex;
-    gap: 0.75em;
-
-    @media (min-width: 768px) {
-        &::before { display: none; }
-        &::after { min-width: 0.75em; }
-    }
-}
-
-.hourly-forecast__list:first-child { margin-block-end: 16px; }
-
-.hourly-forecast__list::before,
-.hourly-forecast__list::after {
-    content: "";
-    min-width: 4px;
-}
-
-.hourly-forecast__item {
-    min-width: 110px;
-    flex: 1 1 100%;
-}
-
-.hourly-forecast__card { text-align: center; }
-
-.hourly-forecast__icon {
-    margin-inline: auto;
-    margin-block: 12px;
-}
-
-.hourly-forecast .card--sm {
-    @media (min-width: 768px) { 
-        padding: 1em;
-    }
-}
-
-/* Footer */
+/*---------------------------------------
+main -> main__right-content -> Footer
+---------------------------------------*/
 .footer,
-.footer .body-3:last-child {
+.footer__img {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -973,17 +1040,16 @@ body {
 .footer {
     color: var(--on-surface-variant);
     text-align: center;
-    gap: 12px 24px;
-    margin-block-start: 28px;
-    // display: none;
+    gap: space("md) space(2xl");
+    margin-block-start: 1.75em;
+
+    &__img { gap: 0.375em; }
 }
 
-.fade-in .footer { display: flex; }
 
-.footer .body-3:last-child { gap: 6px; }
-
-
-/* Loading */
+/*---------------------------------------
+loading
+---------------------------------------*/
 .loading {
     position: absolute;
     top: 0;
@@ -994,26 +1060,23 @@ body {
     place-items: center;
     z-index: 1;
     display: none;
-}
 
-.loading::before {
-    content: "";
-    width: 48px;
-    height: 48px;
-    border: 4px solid var(--on-background);
-    border-block-start-color: transparent;
-    border-radius: var(--radius-circle);
-    -webkit-border-radius: var(--radius-circle);
-    -moz-border-radius: var(--radius-circle);
-    -ms-border-radius: var(--radius-circle);
-    -o-border-radius: var(--radius-circle);
-    animation: loading 500ms linear infinite;
-    -webkit-animation: loading 500ms linear infinite;
+    &::before {
+        content: "";
+        width: 3em;
+        height: 3em;
+        border: 4px solid var(--on-background);
+        border-block-start-color: transparent;
+        border-radius: var(--radius-circle);
+        animation: loading 500ms linear infinite;
+    }
 }
 
 
-/* Error Section */
-.error-content {
+/*---------------------------------------
+error
+---------------------------------------*/
+.error {
     position: fixed;
     top: 0;
     left: 0;
@@ -1026,59 +1089,7 @@ body {
     align-items: center;
     display: none;
     z-index: 8;
+
+    &__btn { margin-block-start: space("xl"); }
 }
 
-.error-content .btn-primary { margin-block-start: 20px; }
-
-@media (min-width: 768px) {
-    // main {
-    //     height: calc(100vh - 96px);
-    //     height: calc(100svh - 96px);
-    // }
-    // article.container {
-    //     padding-block-start: 0;
-    //     grid-template-columns: 280px minmax(0, 1fr);
-    //     align-items: flex-start;
-    //     gap: 24px;
-    // }
-
-    // .content-left {
-    //     position: sticky;
-    //     top: 0;
-    // }
-
-    // .section:not(:last-child) { margin-block: 20px; }
-
-    // .forecast-card .card-item:not(:last-child) {
-    //     margin-block-end: 16px;
-    // }
-
-    // .highlight-list { grid-template-columns: 1fr 1fr; }
-
-    // .highlight-card:nth-child(-n+2) {
-    //     grid-column: span 2;
-    //     height: 160px;
-    // }
-
-    // .highlight-card:nth-child(n+3) { height: 120px; }
-
-    // .highlights .m-icon { font-size: 3.6rem; }
-
-    // .highlight-card.one .card-item {
-    //     width: 25%;
-    //     flex-direction: column-reverse;
-    //     gap: 8px;
-    // }
-
-    .hourly-forecast__container {
-        margin-inline: 0 -24px;
-        border-bottom-left-radius: var(--radius-16);
-        border-top-left-radius: var(--radius-16);
-    }
-
-    .hourly-forecast__list::before { display: none; }
-
-    .hourly-forecast__list::after { min-width: 12px; }
-
-    .hourly-forecast .card--sm { padding: 16px; }
-}
