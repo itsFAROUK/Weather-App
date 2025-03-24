@@ -59,6 +59,21 @@ SCSS Mixins
     }
 }
 
+@mixin loading-spinner($size: 2.4rem, $border-width: 3px, $color: var(--on-surface), $position: absolute) {
+    content: "";
+    border: $border-width solid $color;
+    width: $size;
+    height: $size;
+    border-block-start-color: transparent;
+    border-radius: var(--radius-circle);
+    animation: loading 500ms linear infinite;
+    position: $position;
+}
+
+@keyframes loading {
+    0% { transform: translateY(-50%) rotate(0); } 
+    100% { transform: translateY(-50%) rotate(1turn); }
+}
 
 
 /*---------------------------------------
@@ -442,11 +457,13 @@ Reused Component & Style
     border: 0;
 }
 
-.badge {
-    @include media(tablet) {
-        top: 20px;
-        right: 20px;
-    }
+.fade-in { 
+    animation: fade-in 250ms ease forwards; 
+}
+
+@keyframes fade-in {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }
 
 /*---------------------------------------
@@ -487,6 +504,7 @@ header
         height: 100svh; //for mobile browser
         background-color: var(--surface);
         color: var(--on-surface);
+        will-change: clip-path;
         clip-path: circle(1.5em at calc(100% - 1em - 3em - 1em - 1.5em) 2.5em);
         -webkit-clip-path: circle(1.5em at calc(100% - 1em - 3em - 1em - 1.5em) 2.5em);
         opacity: 0;
@@ -537,16 +555,31 @@ header
         border-block-end: 1px solid var(--outline);
 
         @include media(desktop) { border-block-end: none; }
+
+        &::after {
+            @include loading-spinner();
+
+            top: 50%;
+            transform: translateY(-50%);
+            right: 1rem;
+            z-index: 5;
+            display: none;
+        }
+
+        &:has(.header__search-field--searching) {
+            &::after { display: block; }
+        }
     }
 
     &__search-search-icon, &__search-back-btn {
         position: absolute;
         top: 50%;
-        left: 1.17em;
+        left: 1.75em;
         transform: translate(-50%, -50%);
     }
 
     &__search-search-icon {
+        display: none;
         @include media(desktop) { display: block; }
     }
 
@@ -554,7 +587,7 @@ header
         @include media(desktop) { display: none; }
     }
 
-    &__search-back {
+    &__search-back-btn {
         background-color: transparent;
         box-shadow: none;
     }
@@ -585,25 +618,6 @@ header
         border-bottom-right-radius: 0;
     }
 
-    &::after { // Loading spinner
-        content: "";
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        right: 1rem;
-        width: 2.4rem;
-        height: 2.4rem;
-        border: 3px solid var(--on-surface);
-        border-block-start-color: transparent;
-        border-radius: var(--radius-circle);
-        animation: loading 500ms linear infinite;
-        display: none;
-    }
-
-    &--searching {
-        &::after { display: block; }
-    }
-
     /*---------------------------------------
     header -> header__search -> header__search-result
     ---------------------------------------*/
@@ -615,7 +629,7 @@ header
     }
 
     &__search-list {
-        padding-block: space("sm) space(lg"); 
+        padding-block: space("sm") space("lg"); 
         
         @include media(desktop) {
             position: absolute;
@@ -641,7 +655,7 @@ header
         justify-content: flex-start;
         align-items: center;
         gap: space("lg");
-        padding-inline: space("lg) space(2xl");
+        padding-inline: space("lg") space("2xl");
     
         &-icon, &-subtitle {
             color: var(--on-surface-variant);
@@ -689,11 +703,6 @@ header
         } 
     }
 
-}
-
-@keyframes loading {
-    0% { transform: translateY(-50%) rotate(0); } 
-    100% { transform: translateY(-50%) rotate(1turn); }
 }
 
 
@@ -940,7 +949,7 @@ main -> main__right-content -> highlights
 
 .badge {
     position: absolute;
-    top: 1.43em;
+    top: 1em;
     right: 1.43em;
     padding: 0.14em 0.86em;
     border-radius: var(--radius-pill);
@@ -950,6 +959,14 @@ main -> main__right-content -> highlights
     -o-border-radius: var(--radius-pill);
     font-weight: var(--weight-semiBold);
     cursor: help;
+
+    @include media(tablet) {
+        top: 1.25em;
+    }
+
+    @include media(desktop) {
+        top: 1.5em;
+    }
 
     @each $name, $colors in $aqi-colors {
         &--#{$name} {
@@ -1061,14 +1078,8 @@ loading
     z-index: 1;
     display: none;
 
-    &::before {
-        content: "";
-        width: 3em;
-        height: 3em;
-        border: 4px solid var(--on-background);
-        border-block-start-color: transparent;
-        border-radius: var(--radius-circle);
-        animation: loading 500ms linear infinite;
+    &::after {
+        @include loading-spinner(3rem, 4px, var(--on-background), static);
     }
 }
 
